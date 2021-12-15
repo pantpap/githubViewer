@@ -1,0 +1,6 @@
+export const HOME_SCREEN = 'HOME_SCREEN';
+export const DASHBOARD = 'DASHBOARD';
+export const PROFILE = 'PROFILE';
+export const REPOSITORIES = 'REPOSITORIES';
+export const REPOSITORY_DETAILS = 'REPOSITORY_DETAILS';
+export const FOLLOWERS = 'FOLLOWERS';
