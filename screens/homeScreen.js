@@ -28,7 +28,7 @@ const HomeScreen = ({navigation}) => {
         testID="searchBtn"
         style={{marginBottom: 8}}
         //onClick={() => navigation.navigate('Screen3')} //search user
-        text="Search"
+        label="Search" 
       />
     </View>
   )
