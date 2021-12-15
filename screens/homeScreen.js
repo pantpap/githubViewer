@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, TextInput, Text } from 'react-native';
+import { DASHBOARD } from '../src/navigation';
 
 
 import Button from '../components/Button';
@@ -27,8 +28,9 @@ const HomeScreen = ({navigation}) => {
       <Button
         testID="searchBtn"
         style={{marginBottom: 8}}
-        //onClick={() => navigation.navigate('Screen3')} //search user
-        label="Search" 
+        onPress={() => navigation.navigate(DASHBOARD)}
+        label="Search test branch" 
+
       />
     </View>
   )
