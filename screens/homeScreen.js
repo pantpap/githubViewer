@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, TextInput, Text } from 'react-native';
 import { DASHBOARD } from '../src/navigation';
-
+import API_SEARCH_USER from '../api';
 
 import Button from '../components/Button';
 
@@ -9,11 +9,32 @@ import Button from '../components/Button';
 
 
 const HomeScreen = ({navigation}) => {
-
-  const [user, setUser] = useState();
+  const item = {username: ""};
+  const [user, setUser] = useState(item);
 
   const onChange = (value, type) => {
     setUser(() => ({ ...user, [type]: value }));
+  };
+
+  const searchUser = async () => {
+    try {
+      console.log("searchUser");
+      console.log(user);
+      let url = `${API_SEARCH_USER}/${user.username}`
+      const response = await fetch(url);
+      const json = await response.json();
+      console.log("response");
+      console.log(json.avatar_url);
+      navigation.navigate('DASHBOARD')
+
+
+
+    } catch (error) {
+      console.log("searchUser error");
+      ToastAndroid.show(error, ToastAndroid.SHORT);
+    } finally {
+      console.log("finally!");
+    }
   };
 
   return (
@@ -21,15 +42,17 @@ const HomeScreen = ({navigation}) => {
       <Text>Search for a Github User</Text>
       <TextInput
           placeholder="Github User"
-          onChangeText={(value) => onChange(value, 'user')}
+          onChangeText={(value) => onChange(value, 'username')}
           style={styles.input}
-          value={user}
+          value={user.username}
         />
       <Button
         testID="searchBtn"
         style={{marginBottom: 8}}
-        onPress={() => navigation.navigate(DASHBOARD)}
-        label="Search test branch" 
+        onPress={searchUser}
+        label="Search" 
+
+
 
       />
     </View>

@@ -21,12 +21,12 @@ const RootStack = () => (
       },
       headerTintColor: 'white',
     }}>
-          <Stack.Screen name="{HOME_SCREEN}" component={HomeScreen} />
-          <Stack.Screen name="{DASHBOARD}" component={Dashboard} />
-          <Stack.Screen name="{PROFILE}" component={Profile} />
-          <Stack.Screen name="{REPOSITORIES}" component={Repositories} />
-          <Stack.Screen name="{REPOSITORY_DETAILS}" component={Repository_details} />
-          <Stack.Screen name="{FOLLOWERS}" component={Followers} />
+          <Stack.Screen name={HOME_SCREEN} component={HomeScreen} />
+          <Stack.Screen name={DASHBOARD} component={Dashboard} />
+          <Stack.Screen name={PROFILE} component={Profile} />
+          <Stack.Screen name={REPOSITORIES} component={Repositories} />
+          <Stack.Screen name={REPOSITORY_DETAILS} component={Repository_details} />
+          <Stack.Screen name={FOLLOWERS} component={Followers} />
     
   </Stack.Navigator>
 );
