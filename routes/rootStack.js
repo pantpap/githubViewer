@@ -13,7 +13,7 @@ import Followers from '../screens/followers';
 
 const Stack = createStackNavigator();
 
-const RootStack = () => (
+const RootStack = (route) => (
   <Stack.Navigator
     screenOptions={{
       headerStyle: {
@@ -21,8 +21,14 @@ const RootStack = () => (
       },
       headerTintColor: 'white',
     }}>
-          <Stack.Screen name={HOME_SCREEN} component={HomeScreen} />
-          <Stack.Screen name={DASHBOARD} component={Dashboard} />
+          <Stack.Screen name={HOME_SCREEN} component={HomeScreen}
+                        options={({navigation, route}) =>({
+                            title: 'GitHub Viewer'
+                        })
+          }/>
+          <Stack.Screen name={DASHBOARD}
+                        component={Dashboard}
+                        options={({route}) => ({title: route?.param?.name})} />
           <Stack.Screen name={PROFILE} component={Profile} />
           <Stack.Screen name={REPOSITORIES} component={Repositories} />
           <Stack.Screen name={REPOSITORY_DETAILS} component={Repository_details} />
