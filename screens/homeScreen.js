@@ -24,8 +24,8 @@ const HomeScreen = ({navigation}) => {
       const response = await fetch(url);
       const json = await response.json();
       console.log("response");
-      console.log(json.avatar_url);
-      navigation.navigate('DASHBOARD')
+      console.log(json);
+      navigation.navigate('DASHBOARD', {json})
 
 
 
