@@ -9,18 +9,19 @@ import Button from '../components/Button';
 
 
 const HomeScreen = ({navigation}) => {
-  const item = {username: ""};
-  const [user, setUser] = useState(item);
+  // const item = {username: ""};
+  const [user, setUser] = useState('');
 
-  const onChange = (value, type) => {
-    setUser(() => ({ ...user, [type]: value }));
+  const onChange = (value) => {
+    // setUser(() => ({ ...user, [type]: value }));
+    setUser(() => (value));
   };
 
   const searchUser = async () => {
     try {
       console.log("searchUser");
       console.log(user);
-      let url = `${API_SEARCH_USER}/${user.username}`
+      let url = `${API_SEARCH_USER}/${user}`
       const response = await fetch(url);
       const json = await response.json();
       console.log("response");
@@ -42,9 +43,9 @@ const HomeScreen = ({navigation}) => {
       <Text>Search for a Github User</Text>
       <TextInput
           placeholder="Github User"
-          onChangeText={(value) => onChange(value, 'username')}
+          onChangeText={(value) => onChange(value)}
           style={styles.input}
-          value={user.username}
+          value={user}
         />
       <Button
         testID="searchBtn"

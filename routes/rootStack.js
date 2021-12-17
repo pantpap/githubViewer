@@ -28,7 +28,7 @@ const RootStack = (route) => (
           }/>
           <Stack.Screen name={DASHBOARD}
                         component={Dashboard}
-                        options={({route}) => ({title: route?.param?.name})} />
+                        options={({route}) => ({title: `Dashboard of ${route?.params?.json.name}` })} />
           <Stack.Screen name={PROFILE} component={Profile} />
           <Stack.Screen name={REPOSITORIES} component={Repositories} />
           <Stack.Screen name={REPOSITORY_DETAILS} component={Repository_details} />
