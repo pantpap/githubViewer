@@ -19,22 +19,17 @@ const HomeScreen = ({navigation}) => {
 
   const searchUser = async () => {
     try {
-      console.log("searchUser");
-      console.log(user);
       let url = `${API_SEARCH_USER}/${user}`
       const response = await fetch(url);
       const json = await response.json();
       console.log("response");
       console.log(json);
       navigation.navigate('DASHBOARD', {json})
-
-
-
     } catch (error) {
       console.log("searchUser error");
       ToastAndroid.show(error, ToastAndroid.SHORT);
     } finally {
-      console.log("finally!");
+      
     }
   };
 

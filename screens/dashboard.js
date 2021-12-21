@@ -8,9 +8,8 @@ const Dashboard = ({route, navigation}) => {
   const userData = route?.params?.json;
 
   const { name } = userData;
-
   const navigate = (page) =>{
-    navigation.navigate(page)
+    navigation.navigate(page,{userData})
   }
 
   return (
