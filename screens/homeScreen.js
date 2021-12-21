@@ -40,11 +40,11 @@ const HomeScreen = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <Text>Search for a Github User</Text>
+      <Text style={styles.text}>Search for a Github User</Text>
       <TextInput
           placeholder="Github User"
           onChangeText={(value) => onChange(value)}
-          style={styles.input}
+          style={styles.textInput}
           value={user}
         />
       <Button
@@ -63,9 +63,25 @@ const HomeScreen = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: '#87CEEB',
+    color: 'white',
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  text:{
+    color: 'white',
+    fontSize:18
+  },
+  textInput:{
+    width: 200,
+    height: 40,
+    marginTop: 12,
+    borderWidth: 1,
+    borderRadius: 4,
+    borderColor: 'white',
+    padding: 10,
+    backgroundColor: 'skyblue',
+    color:'white'
   }
 });
 
