@@ -37,7 +37,6 @@ const UserIcon = () => {
           setModalVisible(!modalVisible);
         }}
       >
-        
         <View style={styles.modalContainer}>
           <Ionicons 
             name="close-circle-outline"

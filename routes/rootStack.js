@@ -39,7 +39,9 @@ const RootStack = (route) => (
           <Stack.Screen name={PROFILE} component={Profile} />
           <Stack.Screen name={REPOSITORIES} component={Repositories} />
           <Stack.Screen name={REPOSITORY_DETAILS} component={Repository_details} />
-          <Stack.Screen name={FOLLOWERS} component={Followers} />
+          <Stack.Screen name={FOLLOWERS} 
+                        component={Followers} 
+                        options={({route}) => ({title: `Followers of ${route?.params?.json.name}` })} />
     
   </Stack.Navigator>
 );
