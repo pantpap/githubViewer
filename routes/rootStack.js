@@ -28,11 +28,20 @@ const RootStack = (route) => (
           }/>
           <Stack.Screen name={DASHBOARD}
                         component={Dashboard}
-                        options={({route}) => ({title: `Dashboard of ${route?.params?.json.name}` })} />
-          <Stack.Screen name={PROFILE} component={Profile} />
-          <Stack.Screen name={REPOSITORIES} component={Repositories} />
-          <Stack.Screen name={REPOSITORY_DETAILS} component={Repository_details} />
-          <Stack.Screen name={FOLLOWERS} component={Followers} />
+                        options={({route}) => ({title: `Dashboard of ${route?.params?.json.login}` })} />
+          <Stack.Screen name={PROFILE}
+                        component={Profile}
+                        />
+          <Stack.Screen name={REPOSITORIES}
+                        component={Repositories}
+                        options={({route}) => ({title: `Repositories of ${route?.params?.userData.name}` })}
+                        />
+
+          <Stack.Screen name={REPOSITORY_DETAILS}
+                        component={Repository_details}/>
+          <Stack.Screen name={FOLLOWERS}
+                        component={Followers}
+                        />
     
   </Stack.Navigator>
 );
