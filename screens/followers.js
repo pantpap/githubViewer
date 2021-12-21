@@ -4,10 +4,16 @@ import { View, StyleSheet, TextInput, Text } from 'react-native';
 
 
 
-const Followers = ({navigation}) => {
+const Followers = ({route,navigation}) => {
+  const userData = route?.params?.userData;
+  
+  console.log("Followers");
+  console.log(userData);
   return (
+    
   <View style={styles.container}>
     <Text>Followers</Text>
+    <Text>{userData.followers}</Text>
    
   </View>
 )};

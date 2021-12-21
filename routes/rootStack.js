@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Ionicons } from '@expo/vector-icons';
+import  UserIcon  from '../components/UserIcon';
 
 import { HOME_SCREEN, DASHBOARD, PROFILE, REPOSITORIES, REPOSITORY_DETAILS, FOLLOWERS } from '../navigation';
 
@@ -23,7 +23,14 @@ const RootStack = (route) => (
     }}>
           <Stack.Screen name={HOME_SCREEN} component={HomeScreen}
                         options={({navigation, route}) =>({
-                            title: 'GitHub Viewer'
+                            title: 'GitHub Viewer',
+                            headerStyle:{
+                              backgroundColor: 'white'
+                            },
+                            headerTitleStyle: {
+                              color: '#87CEEB'
+                            },
+                            headerRight: () => <UserIcon/>
                         })
           }/>
           <Stack.Screen name={DASHBOARD}
@@ -41,6 +48,7 @@ const RootStack = (route) => (
                         component={Repository_details}/>
           <Stack.Screen name={FOLLOWERS}
                         component={Followers}
+                        options={({route}) => ({title: `Followers of ${route?.params?.userData.name}` })} />
                         />
     
   </Stack.Navigator>

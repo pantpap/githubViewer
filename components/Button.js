@@ -3,10 +3,9 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 const Button = ({onPress, label, icon, bgColor}) => (
-  <TouchableOpacity onPress={onPress}>
+  <TouchableOpacity onPress={onPress} style={styles.touchable}>
     <View style={[styles.btn, {backgroundColor: bgColor}]}>
       <Text style={styles.btnText}>{label}</Text>
-      <Ionicons name={icon} size={15} color="white" /> 
     </View>
   </TouchableOpacity>
 );
@@ -16,19 +15,27 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    borderRadius: 4,
-    backgroundColor: 'skyblue',
-    padding: 10
+    
+    backgroundColor: 'white'
   },
   btnText: {
-    color: 'white',
+    color: 'black',
     textAlign: 'center',
-    marginRight: 3
+    backgroundColor: 'white',
+  },
+  touchable:{
+    width: 200,
+    height: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: 10,
+    backgroundColor: 'white',
+    borderRadius: 4,
   }
 });
 
 Button.defaultProps = {
-  bgColor: 'skyblue'
+  bgColor: 'white'
 };
 
 export default Button;
