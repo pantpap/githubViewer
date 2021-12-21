@@ -21,36 +21,34 @@ const RootStack = (route) => (
       },
       headerTintColor: 'white',
     }}>
-          <Stack.Screen name={HOME_SCREEN} component={HomeScreen}
-                        options={({navigation, route}) =>({
-                            title: 'GitHub Viewer',
-                            headerStyle:{
-                              backgroundColor: 'white'
-                            },
-                            headerTitleStyle: {
-                              color: '#87CEEB'
-                            },
-                            headerRight: () => <UserIcon/>
-                        })
-          }/>
-          <Stack.Screen name={DASHBOARD}
-                        component={Dashboard}
-                        options={({route}) => ({title: `Dashboard of ${route?.params?.json.login}` })} />
-          <Stack.Screen name={PROFILE}
-                        component={Profile}
-                        />
-          <Stack.Screen name={REPOSITORIES}
-                        component={Repositories}
-                        options={({route}) => ({title: `Repositories of ${route?.params?.userData.name}` })}
-                        />
+      <Stack.Screen name={HOME_SCREEN} component={HomeScreen}
+                    options={({navigation, route}) =>({
+                        title: 'GitHub Viewer',
+                        headerStyle:{
+                          backgroundColor: 'white'
+                        },
+                        headerTitleStyle: {
+                          color: '#87CEEB'
+                        },
+                        headerRight: () => <UserIcon/>
+                    })
+      }/>
+      <Stack.Screen name={DASHBOARD}
+                    component={Dashboard}
+                    options={({route}) => ({title: `Dashboard of ${route?.params?.json.login}` })} />
+      <Stack.Screen name={PROFILE}
+                    component={Profile}
+                    />
+      <Stack.Screen name={REPOSITORIES}
+                    component={Repositories}
+                    options={({route}) => ({title: `Repositories of ${route?.params?.userData.name}` })}
+                    />
+      <Stack.Screen name={REPOSITORY_DETAILS}
+                    component={Repository_details}/>
+      <Stack.Screen name={FOLLOWERS}
+                    component={Followers}
+                    options={({route}) => ({title: `Followers of ${route?.params?.userData.name}` })} />
 
-          <Stack.Screen name={REPOSITORY_DETAILS}
-                        component={Repository_details}/>
-          <Stack.Screen name={FOLLOWERS}
-                        component={Followers}
-                        options={({route}) => ({title: `Followers of ${route?.params?.userData.name}` })} />
-                        />
-    
   </Stack.Navigator>
 );
 
