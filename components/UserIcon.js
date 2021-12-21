@@ -7,15 +7,41 @@ import Button from '../components/Button';
 const UserIcon = () => {
 
   const [modalVisible, setModalVisible] = useState(false);
+  const [token, setToken] = useState('');
   let isLoggedIn = false;
+  let isHome = false;
   //const [isLoggedIn, setIsLoggedIn] = useState();
 
   const logout = () => {
     console.log("logout!");
   };
 
+  const onChange = (value) => {
+    setToken(() => (value));
+  };
+
   return(
   <View>
+    {isHome ?
+    <View>
+    <TouchableOpacity >
+      <View style={[styles.btnHome]}>
+        <Ionicons 
+          name="md-person"
+          color={'#FF0000'}
+          size={40}
+          onPress={() => navigation.popToTop()}
+          />
+          
+      </View>
+    </TouchableOpacity>
+    </View>
+    :
+      <View> 
+      
+      </View>
+    
+    }
     <TouchableOpacity >
       <View style={[styles.btn]}>
         <Ionicons 
@@ -56,7 +82,7 @@ const UserIcon = () => {
               placeholder="Token"
               onChangeText={(value) => onChange(value)}
               style={styles.textInput}
-              value=''
+              value={token}
             />
           <Button
             testID="searchBtn"

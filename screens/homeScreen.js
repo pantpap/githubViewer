@@ -11,6 +11,7 @@ import Button from '../components/Button';
 const HomeScreen = ({navigation}) => {
   // const item = {username: ""};
   const [user, setUser] = useState('');
+  const [error, setError] = useState(false);
 
   const onChange = (value) => {
     // setUser(() => ({ ...user, [type]: value }));
@@ -24,9 +25,19 @@ const HomeScreen = ({navigation}) => {
       let url = `${API_SEARCH_USER}/${user}`
       const response = await fetch(url);
       const json = await response.json();
-      // console.log("response");
-      // console.log(json);
-      navigation.navigate('DASHBOARD', {json})
+        console.log("response");
+       console.log(json);
+       console.log(json?.message);
+      if(json?.message.localeCompare('Not Found') == 0){
+        console.log("error");
+        console.log(error);
+        setError();
+        console.log(error);
+      }else{
+        navigation.navigate('DASHBOARD', {json})
+        setError(false);
+        console.log(error);
+      }
     } catch (error) {
       console.log("searchUser error");
       ToastAndroid.show(error, ToastAndroid.SHORT);
@@ -50,10 +61,9 @@ const HomeScreen = ({navigation}) => {
         style={{marginBottom: 8}}
         onPress={searchUser}
         label="Search" 
-
-
-
       />
+           
+      
     </View>
   )
 };
@@ -68,6 +78,10 @@ const styles = StyleSheet.create({
   },
   text:{
     color: 'white',
+    fontSize:18
+  },
+  error:{
+    color: 'red',
     fontSize:18
   },
   textInput:{
