@@ -1,10 +1,18 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity,Modal, Pressable } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity,Modal, TextInput, Pressable } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+
+import Button from '../components/Button';
 
 const UserIcon = () => {
 
   const [modalVisible, setModalVisible] = useState(false);
+  let isLoggedIn = false;
+  //const [isLoggedIn, setIsLoggedIn] = useState();
+
+  const logout = () => {
+    console.log("logout!");
+  };
 
   return(
   <View>
@@ -21,8 +29,55 @@ const UserIcon = () => {
     </TouchableOpacity>
 
 
-    
-
+    <Modal
+        animationType="slide"
+        visible={modalVisible}
+        presentationStyle = 'fullScreen'
+        onRequestClose={() => {
+          setModalVisible(!modalVisible);
+        }}
+      >
+        
+        <View style={styles.modalContainer}>
+          <Ionicons 
+            name="close-circle-outline"
+            color={'grey'}
+            size={40}
+            style={styles.btnClose}
+            onPress={() => setModalVisible(false)}
+            /> 
+        {!isLoggedIn ?
+        <View>
+          <Pressable
+              style={[styles.button, styles.buttonClose]}
+              onPress={() => setModalVisible(!modalVisible)}
+            />
+          <Text style={styles.text}>Add Credentials</Text>
+          <TextInput
+              placeholder="Token"
+              onChangeText={(value) => onChange(value)}
+              style={styles.textInput}
+              value=''
+            />
+          <Button
+            testID="searchBtn"
+            style={{marginBottom: 8}}
+            //onPress={searchUser}
+            label="Login" 
+          />
+         </View>
+        :
+          
+            <Button
+            testID="searchBtn"
+            style={{marginBottom: 8}}
+            onPress={logout}
+            label="Logout" 
+          />
+        }
+      </View>
+      </Modal>
+        
   </View>
 )};
 
@@ -44,49 +99,38 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginRight: 3
   },
-
-
-  centeredView: {
+  btnClose: {
+    alignSelf: 'flex-end'
+  },
+  btnLogin: {},
+  btnLogout: {},
+  modalContainer: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 22
+    backgroundColor: '#87CEEB',
+    color: 'white',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
-  modalView: {
-    margin: 20,
-    backgroundColor: "white",
-    borderRadius: 20,
-    padding: 35,
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5
+  text:{
+    color: 'white',
+    fontSize:18
   },
-  button: {
-    borderRadius: 20,
+  textInput:{
+    width: 200,
+    height: 40,
+    marginTop: 12,
+    borderWidth: 1,
+    borderRadius: 4,
+    borderColor: 'white',
     padding: 10,
-    elevation: 2
-  },
-  buttonOpen: {
-    backgroundColor: "#F194FF",
-  },
-  buttonClose: {
-    backgroundColor: "#2196F3",
-  },
-  textStyle: {
-    color: "white",
-    fontWeight: "bold",
-    textAlign: "center"
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: "center"
+    backgroundColor: 'skyblue',
+    color:'white'
   }
+
+
+
+
+  
   
 });
 
