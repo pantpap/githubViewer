@@ -28,19 +28,19 @@ const HomeScreen = ({navigation}) => {
         console.log("response");
        console.log(json);
        console.log(json?.message);
-      if(json?.message.localeCompare('Not Found') == 0){
-        console.log("error");
-        console.log(error);
-        setError();
-        console.log(error);
-      }else{
+      // if(json?.message.localeCompare('Not Found') == 0){
+      //   console.log("error");
+      //   console.log(error);
+      //   setError();
+      //   console.log(error);
+     // }else{
         navigation.navigate('DASHBOARD', {json})
         setError(false);
         console.log(error);
-      }
+     // }
     } catch (error) {
       console.log("searchUser error");
-      ToastAndroid.show(error, ToastAndroid.SHORT);
+      //ToastAndroid.show(error, ToastAndroid.SHORT);
     } finally {
       // console.log("finally!");
 
