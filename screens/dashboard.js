@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, StyleSheet, Text, Image, ScrollView, StatusBar, FlatList} from 'react-native';
 import {PROFILE, REPOSITORIES, FOLLOWERS} from "../navigation";
+import Avatar from '../components/Avatar'
 
 
 const Dashboard = ({route, navigation}) => {
@@ -13,10 +14,11 @@ const Dashboard = ({route, navigation}) => {
 
   return (
   <View style={styles.container}>
-    <Image
-        style={styles.avatar}
-        source={{uri: avatar_url}}
-    />
+    <Avatar url={avatar_url}/>
+    {/*<Image*/}
+    {/*    style={styles.avatar}*/}
+    {/*    source={{uri: avatar_url}}*/}
+    {/*/>*/}
     <Text style={[styles.buttons, {backgroundColor: '#5cd9ff'}]} onPress={()=>navigate(PROFILE)}>View Profile</Text>
     <Text style={[styles.buttons, {backgroundColor: '#ff6060'}]} onPress={()=>navigate(REPOSITORIES)}>View Repos</Text>
     <Text style={[styles.buttons, {backgroundColor: '#7579f3'}]} onPress={()=>navigate(FOLLOWERS)}>View Followers</Text>

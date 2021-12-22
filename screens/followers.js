@@ -3,6 +3,7 @@ import { View, StyleSheet, TextInput, Text,FlatList,ScrollView } from 'react-nat
 import { Ionicons } from '@expo/vector-icons';
 
 import API_SEARCH_USER from '../api';
+import Avatar from "../components/Avatar";
 
 
 const Followers = ({route,navigation}) => {
@@ -35,7 +36,7 @@ const Followers = ({route,navigation}) => {
           borderBottomColor: '#ccc',
           padding: 8
         }}>
-        
+
         <View>
           <View style={{flexDirection:"row"}}>
             <View >
@@ -81,6 +82,7 @@ const Followers = ({route,navigation}) => {
   return (
     
   <View style={styles.container}>
+    <Avatar url={userData.avatar_url}/>
       <FlatList
         data={followers}
         renderItem={renderItem}
