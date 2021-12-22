@@ -11,7 +11,7 @@ const Followers = ({route,navigation}) => {
 
   const searchFollowers = async () => {
     try {
-      let url = `${API_SEARCH_USER}/${userData.login}/followers`
+      let url = userData.followers_url;
       const response = await fetch(url);
       const data = await response.json();
       setFollowers(data);
