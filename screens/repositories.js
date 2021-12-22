@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import {View, StyleSheet, TextInput, Text, ToastAndroid} from 'react-native';
+import {View, StyleSheet, TextInput, Text, ToastAndroid, FlatList} from 'react-native';
+import ReposList from "../components/ReposList";
 
 const Repositories = ({route, navigation}) => {
   const userData = route?.params?.userData;
@@ -23,17 +24,28 @@ const Repositories = ({route, navigation}) => {
     getUserRepos();
   }, []);
 
+
+  const renderList = ({item}) => {
+    <ReposList repos={item}/>
+  }
+
   return (
-  <View style={styles.container}>
-    <Text>{data.name}</Text>
-   
-  </View>
+    <FlatList
+              data={data}
+              renderItem={renderList}
+              keyExtractor={data => data.id}
+    />
 )};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: 'white'
+  },
+  view: {
+    flex: 1,
+    backgroundColor: '#87CEEB',
+    color: 'white',
     justifyContent: 'center',
     alignItems: 'center'
   }
