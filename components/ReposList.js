@@ -1,8 +1,9 @@
 import React from "react";
 import {Text, View} from "react-native";
+import {REPOSITORY_DETAILS} from "../navigation";
 
-const ReposList = (props) => {
-    const {repos} = props;
+const ReposList = (props, navigation) => {
+    const {repo} = props;
 
     return (
         <View style={{
@@ -10,15 +11,11 @@ const ReposList = (props) => {
             borderBottomColor: '#ccc',
             padding: 8
         }}>
-            {/*<View style={{flexDirection:"row"}}>*/}
-                <Text style={[styles.common, styles.repoName]}>{repos.name}</Text>
-            {/*</View>*/}
-            {/*<View style={{flexDirection:"row"}}>*/}
-                <Text style={[styles.common]}>Stars: {repos.stargazers_count}</Text>
-            {/*</View>*/}
-            {/*<View style={{flexDirection:"row"}}>*/}
-                <Text>{repos.description}</Text>
-            {/*</View>*/}
+            <Text style={[styles.common, styles.repoName]}
+                  // onPress={navigation.navigate(REPOSITORY_DETAILS, { repo })}
+            >{repo.name}</Text>
+            <Text style={[styles.common]}>Stars: {repo.stargazers_count}</Text>
+            <Text>{repo.description}</Text>
         </View>
     )
 }

@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import {View, StyleSheet, ToastAndroid, FlatList, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, TextInput, Text, ToastAndroid, FlatList, ScrollView} from 'react-native';
 import { WebView } from 'react-native-webview';
 import ReposList from "../components/ReposList";
-import {Touchable} from "react-native-web";
 
 const Repositories = ({route, navigation}) => {
   const userData = route?.params?.userData;
@@ -25,13 +24,11 @@ const Repositories = ({route, navigation}) => {
   }, []);
 
 
-  const renderList = ({ item }) => (
-      // <TouchableOpacity onPress={(item) => repoDetails(item)}>
-        <ReposList repos={item}/>
-      // </TouchableOpacity>
-  )
+  const renderList = ({ item }) => {
+      return <ReposList repos={item}/>
+  }
 
-  const repoDetails = ({item}) => {
+  const repoDetails = ({ item }) => {
     return <WebView source={{ uri: item.html_url }}/>
   }
 
@@ -39,6 +36,7 @@ const Repositories = ({route, navigation}) => {
     <View style={styles.container}>
       <FlatList
           data={repos}
+          on
           renderItem={renderList}
           keyExtractor={repos => repos.id}
       />

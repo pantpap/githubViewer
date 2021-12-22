@@ -1,24 +1,19 @@
 import React from 'react';
-import { View, StyleSheet, TextInput, Text } from 'react-native';
+import { ScrollView } from 'react-native';
+import ProfileData from "../components/ProfileData";
 
 
-
-
-const Profile = ({navigation}) => {
+const Profile = ({route}) => {
+  const userData = route?.params?.userData;
   return (
-  <View style={styles.container}>
-    <Text>Profile</Text>
-   
-  </View>
+    <ScrollView>
+      <ProfileData label='Company' data={userData.company}></ProfileData>
+      <ProfileData label='Location' data={userData.location}></ProfileData>
+      <ProfileData label='Followers' data={userData.followers}></ProfileData>
+      <ProfileData label='Following' data={userData.following}></ProfileData>
+      <ProfileData label='Email' data={userData.email}></ProfileData>
+      <ProfileData label='Public Repos' data={userData.public_repos}></ProfileData>
+    </ScrollView>
 )};
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'white',
-    justifyContent: 'center',
-    alignItems: 'center'
-  }
-});
 
 export default Profile;

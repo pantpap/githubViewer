@@ -41,6 +41,8 @@ const RootStack = (route) => (
                     } />
       <Stack.Screen name={PROFILE}
                     component={Profile}
+                    options={({route}) => ({title: `Profile of ${route?.params?.userData.login}`,
+                        headerRight: () => <UserIcon/> })}
                     />
       <Stack.Screen name={REPOSITORIES}
                     component={Repositories}
@@ -48,7 +50,8 @@ const RootStack = (route) => (
                     headerRight: () => <UserIcon/> })}
                     />
       <Stack.Screen name={REPOSITORY_DETAILS}
-                    component={Repository_details}/>
+                    component={Repository_details}
+                    />
       <Stack.Screen name={FOLLOWERS}
                     component={Followers}
                     options={({route}) => ({title: `Followers of ${route?.params?.userData.login}`,
