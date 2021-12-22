@@ -25,9 +25,9 @@ const HomeScreen = ({navigation}) => {
       let url = `${API_SEARCH_USER}/${user}`
       const response = await fetch(url);
       const json = await response.json();
-        console.log("response");
-       console.log(json);
-       console.log(json?.message);
+        // console.log("response");
+       // console.log(json);
+       // console.log(json?.message);
       // if(json?.message.localeCompare('Not Found') == 0){
       //   console.log("error");
       //   console.log(error);

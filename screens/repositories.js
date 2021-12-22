@@ -1,20 +1,20 @@
 import React, {useEffect, useState} from 'react';
-import {View, StyleSheet, TextInput, Text, ToastAndroid, FlatList} from 'react-native';
+import {View, StyleSheet, ToastAndroid, FlatList, TouchableOpacity} from 'react-native';
+import { WebView } from 'react-native-webview';
 import ReposList from "../components/ReposList";
+import {Touchable} from "react-native-web";
 
 const Repositories = ({route, navigation}) => {
   const userData = route?.params?.userData;
   const {repos_url} = userData;
 
-  const [data, setData] = useState('');
+  const [repos, setRepos] = useState();
 
   const getUserRepos = async () => {
-    console.log('repos', userData);
     try {
       const res = await fetch(repos_url);
       const response = await res.json();
-      setData (() => response);
-      console.log(response)
+      setRepos (response);
     }catch (e) {
       ToastAndroid.show(error, ToastAndroid.SHORT);
     }
@@ -25,16 +25,24 @@ const Repositories = ({route, navigation}) => {
   }, []);
 
 
-  const renderList = ({item}) => {
-    <ReposList repos={item}/>
+  const renderList = ({ item }) => (
+      // <TouchableOpacity onPress={(item) => repoDetails(item)}>
+        <ReposList repos={item}/>
+      // </TouchableOpacity>
+  )
+
+  const repoDetails = ({item}) => {
+    return <WebView source={{ uri: item.html_url }}/>
   }
 
   return (
-    <FlatList
-              data={data}
-              renderItem={renderList}
-              keyExtractor={data => data.id}
-    />
+    <View style={styles.container}>
+      <FlatList
+          data={repos}
+          renderItem={renderList}
+          keyExtractor={repos => repos.id}
+      />
+    </View>
 )};
 
 const styles = StyleSheet.create({
