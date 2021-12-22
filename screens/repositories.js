@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {View, StyleSheet, TextInput, Text, ToastAndroid, FlatList, ScrollView} from 'react-native';
 import { WebView } from 'react-native-webview';
 import ReposList from "../components/ReposList";
+import Avatar from "../components/Avatar";
 
 const Repositories = ({route, navigation}) => {
   const userData = route?.params?.userData;
@@ -34,6 +35,7 @@ const Repositories = ({route, navigation}) => {
 
   return (
     <View style={styles.container}>
+      <Avatar url={userData.avatar_url}  name={userData.name} login={userData.login}/>
       <FlatList
           data={repos}
           on

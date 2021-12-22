@@ -8,7 +8,7 @@ const Profile = ({route}) => {
   const userData = route?.params?.userData;
   return (
     <ScrollView>
-      <Avatar url={userData.avatar_url}/>
+      <Avatar url={userData.avatar_url}  name={userData.name} login={userData.login}/>
       <ProfileData label='Company' data={userData.company}/>
       <ProfileData label='Location' data={userData.location}/>
       <ProfileData label='Followers' data={userData.followers}/>

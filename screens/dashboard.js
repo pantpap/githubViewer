@@ -14,7 +14,7 @@ const Dashboard = ({route, navigation}) => {
 
   return (
   <View style={styles.container}>
-    <Avatar url={avatar_url}/>
+    <Avatar url={avatar_url} />
     {/*<Image*/}
     {/*    style={styles.avatar}*/}
     {/*    source={{uri: avatar_url}}*/}

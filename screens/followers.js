@@ -82,7 +82,7 @@ const Followers = ({route,navigation}) => {
   return (
     
   <View style={styles.container}>
-    <Avatar url={userData.avatar_url}/>
+    <Avatar url={userData.avatar_url} name={userData.name} login={userData.login}/>
       <FlatList
         data={followers}
         renderItem={renderItem}
