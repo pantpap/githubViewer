@@ -27,8 +27,8 @@ const UserIcon = () => {
     <TouchableOpacity >
       <View style={[styles.btnHome]}>
         <Ionicons 
-          name="md-person"
-          color={'#FF0000'}
+          name="home-outline"
+          color={'black'}
           size={40}
           onPress={() => navigation.popToTop()}
           />
