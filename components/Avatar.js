@@ -19,11 +19,10 @@ const Avatar = (props) => (
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         backgroundColor: '#87CEEB',
         color: 'white',
         height: 380,
-        justifyContent: 'center',
+        
       },avatar: {
         height: 300,
         marginBottom: 5,
@@ -31,6 +30,7 @@ const styles = StyleSheet.create({
         resizeMode: 'cover',
     },
     centered: {
+        justifyContent: 'center',
         alignItems: 'center'
     },
     text:{
